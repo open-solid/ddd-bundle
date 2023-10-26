@@ -9,15 +9,9 @@
             "email": "yonelceruto@gmail.com"
         }
     ],
-    "repositories": {
-        "yceruto/ddd": {
-            "type": "path",
-            "url": "/Users/yonelceruto/github/yceruto/ddd/"
-        }
-    },
     "require": {
         "php": ">=8.2",
-        "yceruto/ddd": "*",
+        "yceruto/ddd": "dev-main",
         "symfony/http-kernel": "^7.0",
         "symfony/dependency-injection": "^7.0"
     },
