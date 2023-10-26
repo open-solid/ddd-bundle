@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-composer require yceruto/cqs-bundle
+composer require yceruto/ddd-bundle
 ```
 
 ## License
