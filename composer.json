@@ -1,0 +1,38 @@
+{
+    "name": "yceruto/ddd-bundle",
+    "description": "DDD (Domain-Driven Design) building blocks for Symfony framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yonel Ceruto",
+            "email": "yonelceruto@gmail.com"
+        }
+    ],
+    "repositories": {
+        "yceruto/ddd": {
+            "type": "path",
+            "url": "/Users/yonelceruto/github/yceruto/ddd/"
+        }
+    },
+    "require": {
+        "php": ">=8.2",
+        "yceruto/ddd": "*",
+        "symfony/http-kernel": "^7.0",
+        "symfony/dependency-injection": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yceruto\\DddBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Yceruto\\DddBundle\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev"
+}
