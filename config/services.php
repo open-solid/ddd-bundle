@@ -29,6 +29,6 @@ return static function (ContainerConfigurator $container) {
                 service('cqs.message_bus.domain_event')
             ])
 
-        ->alias(DomainEventBus::class, 'ddd.domain.event.bus')
+        ->alias(DomainEventBus::class, NativeDomainEventBus::class)
     ;
 };
