@@ -12,5 +12,4 @@ This software is published under the [MIT License](LICENSE)
 
 ## TODO
 
- - [ ] Add Doctrine support for UUID type
  - [ ] Add Doctrine support for Criteria
