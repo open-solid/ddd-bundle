@@ -13,12 +13,16 @@ class DddBundle extends AbstractBundle
 {
     public function build(ContainerBuilder $container): void
     {
-        $container->addCompilerPass(new MessageHandlersLocatorPass('cqs.domain_event.subscriber', 'cqs.domain_event.subscriber_middleware', true));
+        $container->addCompilerPass(new MessageHandlersLocatorPass(
+            messageHandlerTagName: 'ddd.domain_event.subscriber',
+            messageHandlerMiddlewareId: 'ddd.domain_event.subscriber_middleware',
+            allowMultiple: true,
+        ));
     }
 
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
-        MessageHandlerConfigurator::configure($builder, AsDomainEventSubscriber::class, 'cqs.domain_event.subscriber');
+        MessageHandlerConfigurator::configure($builder, AsDomainEventSubscriber::class, 'ddd.domain_event.subscriber');
 
         $container->import('../config/services.php');
     }
