@@ -13,7 +13,7 @@ class DddBundle extends AbstractBundle
 {
     public function build(ContainerBuilder $container): void
     {
-        $container->addCompilerPass(new MessageHandlersLocatorPass('cqs.domain_event.subscriber', 'cqs.domain_event.subscriber_middleware'));
+        $container->addCompilerPass(new MessageHandlersLocatorPass('cqs.domain_event.subscriber', 'cqs.domain_event.subscriber_middleware', true));
     }
 
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
