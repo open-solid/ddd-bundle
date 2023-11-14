@@ -15,39 +15,39 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\tagged_it
 
 return static function (ContainerConfigurator $container) {
     $container->services()
-        ->set('es.messenger.middleware.logger', LogMessageMiddleware::class)
+        ->set('es.middleware.logger', LogMessageMiddleware::class)
             ->args([
                 service('logger'),
             ])
-            ->tag('es.messenger.middleware')
+            ->tag('es.middleware')
 
-        ->set('es.messenger.middleware.subscriber', HandleMessageMiddleware::class)
+        ->set('es.middleware.subscriber', HandleMessageMiddleware::class)
             ->args([
-                abstract_arg('es.messenger.subscriber.locator'),
+                abstract_arg('es.subscriber.locator'),
                 HandlersCountPolicy::NO_HANDLER,
             ])
-            ->tag('es.messenger.middleware')
+            ->tag('es.middleware')
 
-        ->set('es.messenger.bus.native', NativeMessageBus::class)
+        ->set('es.bus.native', NativeMessageBus::class)
             ->args([
-                tagged_iterator('es.messenger.middleware'),
+                tagged_iterator('es.middleware'),
             ])
 
-        ->set('es.messenger.bus.native_lazy', NativeLazyMessageBus::class)
+        ->set('es.bus.native.lazy', NativeLazyMessageBus::class)
             ->args([
-                service('es.messenger.bus.native'),
+                service('es.bus.native'),
             ])
 
-        ->set('es.messenger.bus', NativeDomainEventBus::class)
+        ->set('es.bus', NativeDomainEventBus::class)
             ->args([
-                service('es.messenger.bus.native_lazy'),
+                service('es.bus.native.lazy'),
             ])
 
-        ->alias(DomainEventBus::class, 'es.messenger.bus')
+        ->alias(DomainEventBus::class, 'es.bus')
 
         ->set('es.symfony.event_subscriber.terminate', KernelTerminateSubscriber::class)
             ->args([
-                service('es.messenger.bus'),
+                service('es.bus'),
             ])
             ->tag('kernel.event_subscriber')
     ;
