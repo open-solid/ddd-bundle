@@ -46,6 +46,9 @@ return static function (ContainerConfigurator $container) {
         ->alias(DomainEventBus::class, 'es.messenger.bus')
 
         ->set('es.symfony.event_subscriber.terminate', KernelTerminateSubscriber::class)
+            ->args([
+                service('es.messenger.bus'),
+            ])
             ->tag('kernel.event_subscriber')
     ;
 };
