@@ -15,7 +15,7 @@ class DddBundle extends AbstractBundle
     {
         $container->addCompilerPass(new MessageHandlersLocatorPass(
             messageHandlerTagName: 'domain_event.subscriber',
-            messageHandlerMiddlewareId: 'ddd.messenger.middleware.subscriber',
+            messageHandlerMiddlewareId: 'es.messenger.middleware.subscriber',
             allowMultiple: true,
         ));
     }
