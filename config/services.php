@@ -3,6 +3,8 @@
 use Ddd\Domain\Event\DomainEventBus;
 use Ddd\Domain\Event\NativeDomainEventBus;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Yceruto\DddBundle\EventSubscriber\KernelTerminateSubscriber;
+use Yceruto\Messenger\Bus\NativeLazyMessageBus;
 use Yceruto\Messenger\Bus\NativeMessageBus;
 use Yceruto\Messenger\Handler\HandlersCountPolicy;
 use Yceruto\Messenger\Middleware\HandleMessageMiddleware;
@@ -13,29 +15,37 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\tagged_it
 
 return static function (ContainerConfigurator $container) {
     $container->services()
-        ->set('ddd.logger_middleware', LogMessageMiddleware::class)
+        ->set('es.messenger.middleware.logger', LogMessageMiddleware::class)
             ->args([
                 service('logger'),
             ])
-            ->tag('ddd.domain_event.middleware')
+            ->tag('es.messenger.middleware')
 
-        ->set('ddd.domain_event.subscriber_middleware', HandleMessageMiddleware::class)
+        ->set('es.messenger.middleware.subscriber', HandleMessageMiddleware::class)
             ->args([
-                abstract_arg('ddd.domain_event.subscribers_locator'),
+                abstract_arg('es.messenger.subscriber.locator'),
                 HandlersCountPolicy::NO_HANDLER,
             ])
-            ->tag('ddd.domain_event.middleware')
+            ->tag('es.messenger.middleware')
 
-        ->set('ddd.message_bus.domain_event', NativeMessageBus::class)
+        ->set('es.messenger.bus.native', NativeMessageBus::class)
             ->args([
-                tagged_iterator('ddd.domain_event.middleware'),
+                tagged_iterator('es.messenger.middleware'),
             ])
 
-        ->set(NativeDomainEventBus::class)
+        ->set('es.messenger.bus.native_lazy', NativeLazyMessageBus::class)
             ->args([
-                service('ddd.message_bus.domain_event')
+                service('es.messenger.bus.native'),
             ])
 
-        ->alias(DomainEventBus::class, NativeDomainEventBus::class)
+        ->set('es.messenger.bus', NativeDomainEventBus::class)
+            ->args([
+                service('es.messenger.bus.native_lazy'),
+            ])
+
+        ->alias(DomainEventBus::class, 'es.messenger.bus')
+
+        ->set('es.symfony.event_subscriber.terminate', KernelTerminateSubscriber::class)
+            ->tag('kernel.event_subscriber')
     ;
 };
