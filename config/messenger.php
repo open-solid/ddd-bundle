@@ -9,7 +9,7 @@ return static function (ContainerConfigurator $container) {
     $container->services()
         ->set('es.bus', SymfonyDomainEventBus::class)
             ->args([
-                service('query.bus'),
+                service('event.bus'),
             ])
 
         ->alias(DomainEventBus::class, 'es.bus')
