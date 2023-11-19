@@ -25,6 +25,7 @@ return static function (ContainerConfigurator $container) {
             ->args([
                 abstract_arg('es.subscriber.locator'),
                 HandlersCountPolicy::NO_HANDLER,
+                service('logger'),
             ])
             ->tag('es.middleware')
 
