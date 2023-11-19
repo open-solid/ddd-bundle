@@ -1,7 +1,7 @@
 <?php
 
 use Ddd\Domain\Event\DomainEventBus;
-use Ddd\Domain\Event\NativeDomainEventBus;
+use Ddd\Infrastructure\Event\NativeDomainEventBus;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Yceruto\DddBundle\EventSubscriber\KernelTerminateSubscriber;
 use Yceruto\Messenger\Bus\NativeLazyMessageBus;
