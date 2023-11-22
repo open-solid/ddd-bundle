@@ -18,6 +18,7 @@ return static function (ContainerConfigurator $container) {
         ->set('es.middleware.logger', LogMessageMiddleware::class)
             ->args([
                 service('logger'),
+                'domain event',
             ])
             ->tag('es.middleware')
 
@@ -26,6 +27,7 @@ return static function (ContainerConfigurator $container) {
                 abstract_arg('es.subscriber.locator'),
                 HandlersCountPolicy::NO_HANDLER,
                 service('logger'),
+                'Domain event',
             ])
             ->tag('es.middleware')
 
