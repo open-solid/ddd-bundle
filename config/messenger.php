@@ -1,7 +1,7 @@
 <?php
 
-use Ddd\Domain\Event\DomainEventBus;
-use Ddd\Infrastructure\Event\SymfonyDomainEventBus;
+use OpenSolid\Ddd\Domain\Event\DomainEventBus;
+use OpenSolid\Ddd\Infrastructure\Event\SymfonyDomainEventBus;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 

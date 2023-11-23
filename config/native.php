@@ -1,14 +1,14 @@
 <?php
 
-use Ddd\Domain\Event\DomainEventBus;
-use Ddd\Infrastructure\Event\NativeDomainEventBus;
+use OpenSolid\Ddd\Domain\Event\DomainEventBus;
+use OpenSolid\Ddd\Infrastructure\Event\NativeDomainEventBus;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Yceruto\DddBundle\EventSubscriber\KernelTerminateSubscriber;
-use Yceruto\Messenger\Bus\NativeLazyMessageBus;
-use Yceruto\Messenger\Bus\NativeMessageBus;
-use Yceruto\Messenger\Handler\HandlersCountPolicy;
-use Yceruto\Messenger\Middleware\HandleMessageMiddleware;
-use Yceruto\Messenger\Middleware\LogMessageMiddleware;
+use OpenSolid\DddBundle\EventSubscriber\KernelTerminateSubscriber;
+use OpenSolid\Messenger\Bus\NativeLazyMessageBus;
+use OpenSolid\Messenger\Bus\NativeMessageBus;
+use OpenSolid\Messenger\Handler\HandlersCountPolicy;
+use OpenSolid\Messenger\Middleware\HandleMessageMiddleware;
+use OpenSolid\Messenger\Middleware\LogMessageMiddleware;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\abstract_arg;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\tagged_iterator;

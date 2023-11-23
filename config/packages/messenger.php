@@ -1,6 +1,6 @@
 <?php
 
-use Ddd\Domain\Event\DomainEvent;
+use OpenSolid\Ddd\Domain\Event\DomainEvent;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Messenger\MessageBusInterface;
 

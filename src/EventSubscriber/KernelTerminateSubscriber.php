@@ -1,11 +1,11 @@
 <?php
 
-namespace Yceruto\DddBundle\EventSubscriber;
+namespace OpenSolid\DddBundle\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\TerminateEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Yceruto\Messenger\Bus\FlushableMessageBus;
+use OpenSolid\Messenger\Bus\FlushableMessageBus;
 
 final readonly class KernelTerminateSubscriber implements EventSubscriberInterface
 {
